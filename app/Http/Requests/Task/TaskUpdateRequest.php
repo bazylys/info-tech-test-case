@@ -14,12 +14,12 @@ class TaskUpdateRequest extends FormRequest
 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
-{
-    return [
+    {
+        return [
         'title'       => 'string',
         'description' => 'string|nullable',
         'deadline'    => 'date_format:Y-m-d\TH:i|required',
         'status'      => [new Enum(TaskStatus::class)],
-    ];
-}
+        ];
+    }
 }
