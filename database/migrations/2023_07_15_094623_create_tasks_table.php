@@ -22,8 +22,9 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->nullable()
                 ->comment('Creator id')
-                ->references('id')
-                ->on('users');
+                ->constrained('users', 'id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
