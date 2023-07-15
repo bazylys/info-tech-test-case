@@ -20,18 +20,18 @@ docker run --rm \
     composer install --ignore-platform-reqs
     
 # Start docker 
-vendor/bin/sail up
+./vendor/bin/sail up
 
 ## [Swap to new term] ##
 
+# Migrate db & generate key
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate
+
 # Install dependencies
-vendor/bin/sail npm install
+./vendor/bin/sail npm install
 
 # Build Front
-vendor/bin/sail npm run dev
-  
-# Migrate db & generate key
-vendor/bin/sail artisan key:generate
-vendor/bin/sail artisan migrate
+./vendor/bin/sail npm run dev
 ```
 

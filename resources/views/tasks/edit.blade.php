@@ -33,7 +33,7 @@
 
                             <div>
                                 <x-input-label for="description" :value="__('Description')" />
-                                <x-textarea id="description" name="description" class="mt-1 w-full" :value="old('description', $task->title)" autocomplete="description" />
+                                <x-textarea id="description" name="description" class="mt-1 w-full" :value="old('description', $task->description)" autocomplete="description" />
                                 <x-input-error class="mt-2" :messages="$errors->get('description')" />
                             </div>
 
@@ -97,7 +97,7 @@
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <x-danger-button>Delete</x-danger-button>
+                            <x-danger-button>{{ __('Delete') }}</x-danger-button>
                         </form>
                     </section>
                 </div>

@@ -42,19 +42,19 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Title
+                                {{ __('Title') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Description
+                                {{ __('Description') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Status
+                                {{ __('Status') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Deadline
+                                {{ __('Deadline') }}
                             </th>
                             <th scope="col" class="px-6 py-3" rowspan="2">
-                                Action
+                                {{ __('Action') }}
                             </th>
                         </tr>
                     </thead>
@@ -62,10 +62,10 @@
                     @foreach($tasks as $task)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $task->title }}
+                                {{ Str::limit($task->title, 20, '...') }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $task->description }}
+                                {{ Str::limit($task->description, 40, '...') }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $task->status->name() }}
@@ -74,21 +74,19 @@
                                 {{ $task->deadline }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('tasks.edit', $task->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('Edit') }}</a>
                             </td>
                             <td>
                                 <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <x-danger-button>Delete</x-danger-button>
+                                    <x-danger-button>{{ __('Delete') }}</x-danger-button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-
-
             </div>
         </div>
     </div>
